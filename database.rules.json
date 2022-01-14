@@ -1,0 +1,35 @@
+{
+  "rules": {
+    ".read": "auth !== null && auth.provider === 'anonymous'",
+    ".write": "auth != null",
+    "countries": {
+      ".read": true,
+      ".write": true
+    },
+    "cities": {
+      ".read": true,
+      ".write": true,
+      ".indexOn": "countryId"
+    },
+    "attractions": {
+      ".read": true,
+      ".write": true,
+      ".indexOn": "cityId"
+    },
+    "hotels": {
+      ".read": true,
+      ".write": true,
+      ".indexOn": "cityId"
+    },
+    "itineraries": {
+      /*"$userId": {
+         grants write access to the owner of this itinerary whose uid must exactly match the key (userID)
+        ".write": "auth !== null && auth.uid === $userId",
+         grants read access to any user who is logged in anonymously
+        ".read": "auth !== null && auth.provider === 'anonymous'"
+      }*/
+      ".write": true,
+      ".read": true
+    }
+  }
+}
